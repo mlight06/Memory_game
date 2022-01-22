@@ -4,7 +4,8 @@
   "description": "A game of concentration",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server/index.js"
   },
   "repository": {
     "type": "git",
@@ -16,7 +17,13 @@
     "url": "https://github.com/mlight06/Memory_game/issues"
   },
   "homepage": "https://github.com/mlight06/Memory_game#readme",
-  "dependencies": {},
+  "dependencies": {
+    "express": "^4.17.2",
+    "nodemon": "^2.0.15",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "webpack": "^5.67.0"
+  },
   "devDependencies": {
     "eslint": "^8.7.0",
     "eslint-config-airbnb": "^19.0.4",
