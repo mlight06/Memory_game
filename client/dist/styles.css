@@ -3,6 +3,6 @@
   justify-content: space-between;
   flex-wrap: wrap;
 }
-#eachcard {
+.eachcard {
   flex: 1 0 20%; margin: 5px;
 }

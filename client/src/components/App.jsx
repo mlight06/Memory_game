@@ -4,6 +4,9 @@ import Card from './Card';
 export default function App() {
   const cardType = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6];
   const [gameStart, setGameStart] = useState(false);
+  const [newMatch, setNewMatch] = useState(true);
+  // let firstCard = 0;
+  // let secondCard = 0;
 
   // will randomize the order in which cards are placed
   function shuffle() {
@@ -24,13 +27,41 @@ export default function App() {
     setGameStart(true);
     return cardType;
   }
+  function clickedCard(e) {
+    let firstCard = 0;
+    let secondCard = 0;
+    console.log('e', e.target.id);
+    if (newMatch === true) {
+      firstCard = e.target.id;
+      console.log('firstcard', firstCard);
+      setNewMatch(false);
+    } else {
+      secondCard = e.target.id;
+      console.log('secondCard', secondCard, 'first', firstCard);
+      if (firstCard === secondCard) {
+        console.log('same!');
+        setNewMatch(true);
+      } else {
+        console.log('not a match!');
+        setNewMatch(true);
+      }
+    }
+  }
 
   return (
     <div>
       <button onClick={shuffle}>Start the game!</button>
       <div id="cardscontainer">
         {gameStart
-          ? cardType.map((card) => <Card card={card} />)
+          ? cardType.map((card) => (
+            <div
+              className="eachcard"
+              id={card}
+              onClick={(e) => clickedCard(e)}
+            >
+              <Card card={card} />
+            </div>
+          ))
           : null}
       </div>
 
