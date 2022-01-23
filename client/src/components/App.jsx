@@ -28,7 +28,7 @@ export default function App() {
   return (
     <div>
       <button onClick={shuffle}>Start the game!</button>
-      <div>
+      <div id="cardscontainer">
         {gameStart
           ? cardType.map((card) => <Card card={card} />)
           : null}
