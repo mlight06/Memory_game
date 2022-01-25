@@ -6,3 +6,11 @@
 .eachcard {
   flex: 1 0 20%; margin: 5px;
 }
+#startimage {
+  max-height: 100px;
+  max-width: 100px;
+}
+#flippedimage {
+  max-height: 100px;
+  max-width: 100px;
+}

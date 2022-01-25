@@ -10,7 +10,7 @@ export default function App() {
 
   useEffect(() => {
     if (firstCard !== 0 && secondCard !== 0) {
-      console.log('first', firstCard, 'second', secondCard, 'new', newMatch, firstCard === secondCard);
+      console.log('first', firstCard, 'second', secondCard);
       if (firstCard === secondCard) {
         console.log('same!');
       } else {
@@ -49,11 +49,11 @@ export default function App() {
   function clickedCard(e) {
     if (newMatch === true) {
       // console.log('e', e.target.id);
-      setFirstCard(e.target.id);
+      setFirstCard(e.target.className);
       // console.log('firstcard', firstCard);
       setNewMatch(false);
     } else {
-      setSecondCard(e.target.id);
+      setSecondCard(e.target.className);
       // console.log('secondCard', secondCard, 'first', firstCard);
       setNewMatch(true);
     }
