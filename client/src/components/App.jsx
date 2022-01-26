@@ -48,13 +48,10 @@ export default function App() {
 
   function clickedCard(e) {
     if (newMatch === true) {
-      // console.log('e', e.target.id);
       setFirstCard(e.target.className);
-      // console.log('firstcard', firstCard);
       setNewMatch(false);
     } else {
       setSecondCard(e.target.className);
-      // console.log('secondCard', secondCard, 'first', firstCard);
       setNewMatch(true);
     }
   }

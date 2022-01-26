@@ -6,11 +6,15 @@ export default function Card(props) {
   const [startImage, setStartImage] = useState('');
   const [cardFlipped, setCardFlipped] = useState(false);
 
+  function flipCard() {
+    setCardFlipped(true);
+  }
+
   return (
 
     <div
       className="cardNumber"
-      id={card}
+      onClick={flipCard}
     >
       {cardFlipped
         ? <img className={card} id="flippedimage" src={`./assets/${card}.png`} />
