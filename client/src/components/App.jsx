@@ -7,20 +7,24 @@ export default function App() {
   const [newMatch, setNewMatch] = useState(true);
   const [firstCard, setFirstCard] = useState(0);
   const [secondCard, setSecondCard] = useState(0);
+  const [matchingCards, setMatchingCards] = useState([]);
 
   useEffect(() => {
     if (firstCard !== 0 && secondCard !== 0) {
       console.log('first', firstCard, 'second', secondCard);
       if (firstCard === secondCard) {
+        setMatchingCards((matchingCards) => [...matchingCards, Number(firstCard), Number(secondCard)]);
+        console.log('matching', matchingCards);
         console.log('same!');
       } else {
       // use setTimeout to reset card images
+
         console.log('not a match!');
       }
       setFirstCard(0);
       setSecondCard(0);
     }
-  }, [firstCard, secondCard, newMatch]);
+  }, [firstCard, secondCard, newMatch, matchingCards]);
 
   // will randomize the order in which cards are placed
   function shuffle() {
@@ -42,7 +46,6 @@ export default function App() {
   }
   function dealCards() {
     shuffle();
-    console.log('card', cardType);
     setGameStart(true);
   }
 
@@ -57,7 +60,7 @@ export default function App() {
   }
 
   return (
-    <div>
+    <div id="main">
       <button onClick={dealCards}>Start the game!</button>
       <div id="cardscontainer">
         {gameStart
@@ -67,7 +70,7 @@ export default function App() {
               id={card}
               onClick={(e) => clickedCard(e)}
             >
-              <Card card={card} />
+              <Card card={card} matchingCards={matchingCards} secondCard={secondCard} />
             </div>
           ))
           : null}

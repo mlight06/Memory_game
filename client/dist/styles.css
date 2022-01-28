@@ -1,3 +1,6 @@
+/* #app {
+  background-image: url("./assets/table.png");
+} */
 #cardscontainer {
   display: flex;
   justify-content: space-between;
