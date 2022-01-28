@@ -5,12 +5,13 @@ export default function Card(props) {
   const { secondCard } = props;
   const { matchingCards } = props;
   const [cardFlipped, setCardFlipped] = useState(false);
-  console.log('secondCARD', secondCard);
+
   // function checkMatch() {
   useEffect(() => {
     if (secondCard != 0) {
       console.log('does it match', matchingCards, matchingCards.includes(card));
       if (matchingCards.includes(card)) {
+        setCardFlipped(true);
         console.log('match');
       } else {
         console.log('no match');

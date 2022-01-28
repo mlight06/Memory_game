@@ -8,17 +8,16 @@ export default function App() {
   const [firstCard, setFirstCard] = useState(0);
   const [secondCard, setSecondCard] = useState(0);
   const [matchingCards, setMatchingCards] = useState([]);
+  const [shuffledCards, setShuffledCard] = useState(cardType);
 
   useEffect(() => {
     if (firstCard !== 0 && secondCard !== 0) {
-      console.log('first', firstCard, 'second', secondCard);
+      // console.log('first', firstCard, 'second', secondCard);
       if (firstCard === secondCard) {
-        setMatchingCards((matchingCards) => [...matchingCards, Number(firstCard), Number(secondCard)]);
+        setMatchingCards([...matchingCards, Number(firstCard), Number(secondCard)]);
         console.log('matching', matchingCards);
         console.log('same!');
       } else {
-      // use setTimeout to reset card images
-
         console.log('not a match!');
       }
       setFirstCard(0);
@@ -31,18 +30,16 @@ export default function App() {
     let currentIndex = cardType.length;
     let randomIndex;
 
-    // While there remain elements to shuffle...
     while (currentIndex !== 0) {
-      // Pick a remaining element...
       randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex -= 1;
 
-      // And swap it with the current element.
       [cardType[currentIndex], cardType[randomIndex]] = [
         cardType[randomIndex], cardType[currentIndex]];
     }
+    console.log('shuffled', cardType);
 
-    return cardType;
+    setShuffledCard(cardType);
   }
   function dealCards() {
     shuffle();
@@ -64,7 +61,7 @@ export default function App() {
       <button onClick={dealCards}>Start the game!</button>
       <div id="cardscontainer">
         {gameStart
-          ? cardType.map((card) => (
+          ? shuffledCards.map((card) => (
             <div
               className="eachcard"
               id={card}
