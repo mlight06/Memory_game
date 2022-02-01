@@ -22,12 +22,6 @@ export default function Card(props) {
     }
   }, [matchingCards, secondCard]);
 
-  //   }
-  // }
-  // useEffect(() => {
-  //   checkMatch();
-  // }, [matchingCards]);
-
   function flipCard() {
     setCardFlipped(true);
   }
