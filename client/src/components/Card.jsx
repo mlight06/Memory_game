@@ -1,42 +1,31 @@
-import React, { useEffect, useState } from 'react';
+import React, { setState } from 'react';
 
-export default function Card(props) {
-  const { card } = props;
-  const { secondCard } = props;
-  const { matchingCards } = props;
-  const [cardFlipped, setCardFlipped] = useState(false);
-
-  // function checkMatch() {
-  useEffect(() => {
-    if (secondCard != 0) {
-      console.log('does it match', matchingCards, matchingCards.includes(card));
-      if (matchingCards.includes(card)) {
-        setCardFlipped(true);
-        console.log('match');
-      } else {
-        console.log('no match');
-        setTimeout(() => {
-          setCardFlipped(false);
-        }, 2500);
-      }
-    }
-  }, [matchingCards, secondCard]);
-
-  function flipCard() {
-    setCardFlipped(true);
+export default class Card extends React.Component(props) {
+  constructor(props) {
+    super();
+    this.state = {
+      card: props.card,
+      flippedCard: false,
+    };
   }
 
-  return (
+  // function checkMatch() {
 
-    <div
-      className="cardNumber"
-      onClick={flipCard}
-    >
-      {cardFlipped
-        ? <img className={card} id="flippedimage" src={`./assets/${card}.png`} />
-        : <img className={card} id="startimage" src="../assets/8.png" />}
+  flipCard() {
+    this.setState({ flippedCard: true });
+  }
 
-    </div>
+  render() {
+    return (
+      <div
+        className="cardNumber"
+        onClick={flipCard}
+      >
+        {cardFlipped
+          ? <img className={card} id="flippedimage" src={`./assets/${card}.png`} />
+          : <img className={card} id="startimage" src="../assets/8.png" />}
 
-  );
+      </div>
+    );
+  }
 }
