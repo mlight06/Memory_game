@@ -1,29 +1,29 @@
 import React, { setState } from 'react';
 
-export default class Card extends React.Component(props) {
+export default class Card extends React.Component {
   constructor(props) {
-    super();
+    super(props);
     this.state = {
-      card: props.card,
-      flippedCard: false,
+      cardFlipped: false,
     };
+    console.log('card', this.props.card);
+    this.flipCard = this.flipCard.bind(this);
   }
-
   // function checkMatch() {
 
   flipCard() {
-    this.setState({ flippedCard: true });
+    this.setState({ cardFlipped: true });
   }
 
   render() {
     return (
       <div
         className="cardNumber"
-        onClick={flipCard}
+        onClick={this.flipCard}
       >
-        {cardFlipped
-          ? <img className={card} id="flippedimage" src={`./assets/${card}.png`} />
-          : <img className={card} id="startimage" src="../assets/8.png" />}
+        {this.state.cardFlipped
+          ? <img className="card" id="flippedimage" src={`./assets/${this.props.card}.png`} />
+          : <img className="card" id="startimage" src="../assets/8.png" />}
 
       </div>
     );
