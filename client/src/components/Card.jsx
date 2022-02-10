@@ -5,15 +5,24 @@ export default class Card extends React.Component {
     super(props);
     this.state = {
       cardFlipped: false,
+      matched: false,
     };
     console.log('card', this.props.card);
-    this.flipCard = this.flipCard.bind(this);
+    console.log('first', this.props.firstCard, this.props.secondCard);
   }
-  // function checkMatch() {
 
-  flipCard() {
-    this.setState({ cardFlipped: true });
+  componentDidUpdate() {
+    if (this.props.firstCard === this.props.card || this.props.secondCard === this.props.card) {
+      this.setState({ matched: true });
+    }
+    this.state.matched ? null : setTimeout(() => {
+      this.setState({ cardFlipped: false });
+    }, 2500);
   }
+
+  flipCard = () => {
+    this.setState({ cardFlipped: true });
+  };
 
   render() {
     return (
@@ -22,8 +31,8 @@ export default class Card extends React.Component {
         onClick={this.flipCard}
       >
         {this.state.cardFlipped
-          ? <img className="card" id="flippedimage" src={`./assets/${this.props.card}.png`} />
-          : <img className="card" id="startimage" src="../assets/8.png" />}
+          ? <img className={this.props.card} id="flippedimage" src={`./assets/${this.props.card}.png`} />
+          : <img className={this.props.card} id="startimage" src="../assets/8.png" />}
 
       </div>
     );
